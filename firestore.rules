@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function myUser() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function isAuthority() {
+      return signedIn() && myUser().data.role in ['AUTHORITY', 'ADMIN'];
+    }
+
+    match /users/{userId} {
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == 'CITIZEN';
+      allow read: if signedIn() && (request.auth.uid == userId || isAuthority());
+      allow update: if signedIn() && request.auth.uid == userId
+        && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    match /reports/{reportId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.status == 'SUBMITTED';
+
+      allow update: if isAuthority()
+        || (signedIn()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['confirmations'])
+          && request.resource.data.confirmations == resource.data.confirmations + 1);
+      allow delete: if isAuthority();
+
+      match /confirmations/{userId} {
+        allow read: if signedIn();
+        allow create: if signedIn() && request.auth.uid == userId;
+        allow update, delete: if false;
+      }
+    }
+
+    match /sos_alerts/{sosId} {
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow read: if signedIn() && (resource.data.userId == request.auth.uid || isAuthority());
+      allow update: if isAuthority();
+      allow delete: if false;
+    }
+  }
+}

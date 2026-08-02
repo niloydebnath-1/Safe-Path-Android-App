@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.nirapod.ui.auth.LoginFragment"
+        android:label="Login">
+
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/registerFragment" />
+
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_login_to_authority"
+            app:destination="@id/authorityFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_login_to_admin"
+            app:destination="@id/adminFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.nirapod.ui.auth.RegisterFragment"
+        android:label="Register">
+
+        <action
+            android:id="@+id/action_register_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.nirapod.ui.home.HomeFragment"
+        android:label="Home">
+
+        <action
+            android:id="@+id/action_home_to_map"
+            app:destination="@id/mapFragment" />
+
+        <action
+            android:id="@+id/action_home_to_report"
+            app:destination="@id/reportFragment" />
+
+        <action
+            android:id="@+id/action_home_to_my_reports"
+            app:destination="@id/myReportsFragment" />
+
+        <action
+            android:id="@+id/action_home_to_authority"
+            app:destination="@id/authorityFragment" />
+
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.nirapod.ui.map.MapFragment"
+        android:label="Safety Map">
+
+        <action
+            android:id="@+id/action_map_to_report"
+            app:destination="@id/reportFragment" />
+
+        <action
+            android:id="@+id/action_map_to_detail"
+            app:destination="@id/reportDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.nirapod.ui.report.ReportFragment"
+        android:label="Submit Report" />
+
+    <fragment
+        android:id="@+id/myReportsFragment"
+        android:name="com.example.nirapod.ui.reports.MyReportsFragment"
+        android:label="My Reports">
+
+        <action
+            android:id="@+id/action_my_reports_to_detail"
+            app:destination="@id/reportDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportDetailFragment"
+        android:name="com.example.nirapod.ui.reports.ReportDetailFragment"
+        android:label="Report Details">
+
+        <argument
+            android:name="reportId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/authorityFragment"
+        android:name="com.example.nirapod.ui.authority.AuthorityFragment"
+        android:label="Authority Dashboard">
+
+        <action
+            android:id="@+id/action_authority_to_detail"
+            app:destination="@id/reportDetailFragment" />
+
+        <action
+            android:id="@+id/action_authority_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/authorityFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.nirapod.ui.admin.AdminFragment"
+        android:label="Admin Dashboard">
+
+        <action
+            android:id="@+id/action_admin_to_authority"
+            app:destination="@id/authorityFragment" />
+
+        <action
+            android:id="@+id/action_admin_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/adminFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

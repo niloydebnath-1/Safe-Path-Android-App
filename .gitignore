@@ -1,0 +1,49 @@
+﻿# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Gradle and Kotlin caches
+.gradle/
+.kotlin/
+build/
+*/build/
+
+# Local machine configuration
+local.properties
+
+# Secrets and environment files
+secrets.properties
+keystore.properties
+.env
+.env.*
+app/google-services.json
+
+# Signing files
+*.jks
+*.keystore
+
+# Native build files
+.externalNativeBuild/
+.cxx/
+
+# Generated packages
+*.apk
+*.aab
+*.apks
+captures/
+
+# Backup and temporary files
+*.bak
+*.tmp
+*.temp
+*~
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Accidental nested duplicate project
+/Safe Path/

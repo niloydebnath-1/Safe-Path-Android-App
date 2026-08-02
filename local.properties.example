@@ -1,0 +1,15 @@
+# Copy these lines into your Android SDK-generated local.properties file.
+# Keep sdk.dir from Android Studio and add the values below.
+
+FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+FIREBASE_APP_ID=YOUR_FIREBASE_ANDROID_APP_ID
+FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
+FIREBASE_GCM_SENDER_ID=YOUR_GCM_SENDER_ID
+
+# Optional: free Supabase Storage project. Without it, images remain local in demo mode.
+SUPABASE_URL=https://YOUR_PROJECT.supabase.co/
+SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+SUPABASE_BUCKET=hazard-images
+
+# Firebase AI Logic model. Change remotely or here when needed.
+GEMINI_MODEL=gemini-3.5-flash-lite

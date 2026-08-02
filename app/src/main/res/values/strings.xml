@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Safe Path</string>
+    <string name="prototype_disclaimer">Prototype only — not connected to police or emergency services.</string>
+    <string name="osm_attribution">© OpenStreetMap contributors</string>
+</resources>
